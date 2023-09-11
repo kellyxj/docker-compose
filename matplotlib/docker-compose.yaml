@@ -1,0 +1,6 @@
+services:
+  jupyter:
+    image: matplotlib 
+    container_name: matplotlib
+    ports:
+      - "10000:8888"
