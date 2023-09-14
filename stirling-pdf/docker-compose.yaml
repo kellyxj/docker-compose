@@ -3,5 +3,10 @@ services:
   stirling-pdf:
     image: frooodle/s-pdf:latest
     container_name: stirling-pdf
-    ports:
-      - '8085:8080'
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    name: nginx-proxy
+    external: true

@@ -4,7 +4,6 @@ services:
     image: netdata/netdata
     container_name: netdata
     pid: host
-    network_mode: host
     restart: unless-stopped
     cap_add:
       - SYS_PTRACE
@@ -21,8 +20,15 @@ services:
       - /sys:/host/sys:ro
       - /etc/os-release:/host/etc/os-release:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - nginx-proxy
 
 volumes:
   netdataconfig:
   netdatalib:
   netdatacache:
+
+networks:
+  nginx-proxy:
+    name: nginx-proxy
+    external: true

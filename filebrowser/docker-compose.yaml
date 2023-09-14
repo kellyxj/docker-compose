@@ -1,10 +1,15 @@
 services:
-  web:
+  filebrowser:
     image: filebrowser/filebrowser:latest
     container_name: filebrowser
     user: "${UID}:${GID}"
-    ports:
-      - "8081:80"
     volumes:
       - /:/srv
       - /root/.filebrowser/filebrowser.db:/database.db
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    name: nginx-proxy
+    external: true

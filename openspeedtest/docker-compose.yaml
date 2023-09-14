@@ -2,7 +2,11 @@ version: '3.3'
 services:
   speedtest:
     container_name: openspeedtest
-    ports:
-      - '3000:3000'
-      - '3001:3001'
     image: openspeedtest/latest
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    name: nginx-proxy
+    external: true

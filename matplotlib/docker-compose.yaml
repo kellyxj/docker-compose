@@ -2,5 +2,10 @@ services:
   jupyter:
     image: matplotlib 
     container_name: matplotlib
-    ports:
-      - "10000:8888"
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    name: nginx-proxy
+    external: true

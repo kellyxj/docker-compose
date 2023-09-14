@@ -1,9 +1,14 @@
 version: "3.9"
 services:
-  web:
+  hiccup:
     image: bleckbeard/hiccup:latest
     container_name: hiccup
-    ports:
-      - "8899:80"
     volumes:
       - /root/.hiccup/configs/config.json:/usr/share/nginx/html/configs/config.json
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    name: nginx-proxy
+    external: true
